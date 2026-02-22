@@ -74,6 +74,9 @@ Transmission
 
 and returns a predicted price.
 
+## 🐍 Python Version
+Python 3.10 was used for this project.
+
 ## ▶️ How to Run
 
 1. Place `merc.csv` in the same folder as `mercedes_price_prediction.py`  

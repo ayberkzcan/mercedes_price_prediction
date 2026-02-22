@@ -33,7 +33,9 @@ Architecture:
 Input → Dense(64, ReLU) → Dense(32, ReLU) → Dense(16, ReLU) → Dense(1)
 
 Loss: Mean Squared Error (MSE)
+
 Optimizer: Adam
+
 Regularization: EarlyStopping (patience = 25)
 
 ## 📈 Model Performance

@@ -1,89 +1,68 @@
-## Mercedes Price Prediction with Neural Network
+# Mercedes Price Analysis
 
-This project predicts used Mercedes car prices using a deep learning regression model built with TensorFlow/Keras. It demonstrates a complete end-to-end machine learning workflow including data analysis, preprocessing, model training, evaluation, visualization, and interactive user-based prediction.
+This project analyzes used Mercedes car prices using a dataset containing features such as year, mileage, fuel type, and transmission. The goal is to explore the data, identify key trends, and provide insights for data-driven pricing decisions.
 
-## 📌 Project Pipeline
+---
 
-The workflow starts with Exploratory Data Analysis (EDA) to understand feature distributions and relationships. To reduce skewness and improve model stability, the top 1% of price values were removed as outliers. Categorical variables were transformed using one-hot encoding and all numerical features were scaled to the 0–1 range with MinMaxScaler.
+## 📊 Exploratory Data Analysis & Insights
 
-A fully connected neural network with the architecture 64 → 32 → 16 → 1 was trained using the Adam optimizer and Mean Squared Error (MSE) loss function. EarlyStopping (patience = 25) was applied to prevent overfitting and stop training when validation loss stopped improving.
+### Price Distribution
+![Price Distribution](images/price_distribution.png)  
+- Most prices are concentrated in the 20k–40k range, representing mid-segment vehicles.  
+- Outliers in the top 1% were removed to create a more symmetric distribution.  
+- **Business Insight:** Pricing for mid-segment vehicles can be standardized, while extreme luxury models may require special pricing strategies.
 
-The model was evaluated using MAE, RMSE, and R² metrics and visualized with loss curves and real vs predicted price scatter plots. The final model supports interactive price prediction based on user input.
+### Mileage vs Price
+![Mileage vs Price](images/mileage_price_after.png)  
+- As mileage increases, price decreases (negative correlation).  
+- High-mileage cars consistently sell for less.  
+- **Business Insight:** Vehicle age and mileage are the strongest predictors of price. Sellers can optimize pricing based on these variables.
 
-## 📊 Dataset
+### Vehicle Count by Year
+![Vehicle Count by Year](images/year_count.png)  
+- Newer vehicles dominate the dataset; older cars are underrepresented.  
+- **Business Insight:** Inventory is skewed toward newer models, so pricing and marketing strategies should focus on recent vehicles. Model predictions for older cars may be less reliable.
 
-Dataset: merc.csv
-The dataset contains features such as:
+### Correlation Heatmap
+![Correlation Heatmap](images/correlation.png)  
+- Mileage and year have the highest impact on price.  
+- Other features have weaker correlations but may still provide incremental insights.  
+- **Business Insight:** Key features can guide promotions, discounts, and valuation strategies.
 
-year
+---
 
-mileage
+## 📈 Model Overview (Optional)
+A regression model was trained to understand pricing relationships.  
 
-fuel type
+| Metric | Value |
+|--------|-------|
+| MAE    | 2392.63 |
+| RMSE   | 3468.27 |
+| R²     | 0.879 |
 
-transmission
+> The model captures general price trends, particularly for mid-segment vehicles.
 
-other vehicle attributes
+---
 
-These features are used to predict the car price.
+## ⚡ Key Takeaways
 
-## 🧠 Model Details
+- Vehicle age and mileage are the most influential features affecting price.  
+- Outlier removal improves data consistency and visualization clarity.  
+- Sellers and businesses can use these insights to optimize pricing and inventory decisions.  
+- This project demonstrates **EDA + business insights**, making it suitable for a data analyst portfolio.
 
-Architecture:
-Input → Dense(64, ReLU) → Dense(32, ReLU) → Dense(16, ReLU) → Dense(1)
-
-Loss: Mean Squared Error (MSE)
-
-Optimizer: Adam
-
-Regularization: EarlyStopping (patience = 25)
-
-## 📈 Model Performance
-
-MAE: ~2255
-
-RMSE: ~3000
-
-R² Score: Strong correlation between real and predicted prices
-
-## 📷 Visualizations
-
-The project includes:
-
-Price distribution (before/after outlier removal)
-
-Correlation heatmap
-
-Mileage vs price relationship
-
-Training vs validation loss curve
-
-Real vs predicted price scatter plot
-
-## 🧪 User Input Prediction
-
-After training, the model asks for:
-
-Car year
-
-Mileage
-
-Fuel type
-
-Transmission
-
-and returns a predicted price.
+---
 
 ## 🐍 Python Version
-Python 3.10 was used for this project.
 
-## ▶️ How to Run
+- Python 3.10
 
-1. Place `merc.csv` in the same folder as `mercedes_price_prediction.py`  
-2. Install the required libraries  
-3. Run the script
+---
+
+## ▶️ How to Run (Optional)
+
+1. Place `merc.csv` in the same folder as the notebook/script  
+2. Install required libraries:
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn tensorflow
-python mercedes_price_prediction.py
-```
